@@ -26,7 +26,7 @@ http://www.gnu.org/licenses/
 ========================================================================
 */
 
-package schemacrawler.testdb;
+package us.fatehi;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
