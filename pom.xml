@@ -79,12 +79,6 @@
       <version>12.8.1.jre8</version>
     </dependency>
     <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>mssql-jdbc_auth</artifactId>
-      <version>12.8.1.x64</version>
-      <type>dll</type>
-    </dependency>
-    <dependency>
       <groupId>com.oracle.database.jdbc.debug</groupId>
       <artifactId>ojdbc8_g</artifactId>
       <version>21.16.0.0</version>
