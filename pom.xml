@@ -49,13 +49,13 @@
     </repository>
   </distributionManagement>
   <dependencies>
-  
+
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
       <version>4.7.6</version>
     </dependency>
-    
+
     <!-- JDBC drivers -->
 
     <dependency>
@@ -79,7 +79,7 @@
       <artifactId>mssql-jdbc_auth</artifactId>
       <version>12.8.1.x64</version>
       <type>dll</type>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
@@ -105,8 +105,8 @@
       <groupId>net.snowflake</groupId>
       <artifactId>snowflake-jdbc</artifactId>
       <version>3.21.0</version>
-    </dependency>  
-      
+    </dependency>
+
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -296,8 +296,11 @@
         <version>3.3.0</version>
         <configuration>
           <descriptors>
-            <descriptor>src/main/assembly/bin.xml</descriptor>
+            <descriptor>src/main/assembly/assembly.xml</descriptor>
           </descriptors>
+          <formats>
+		    <format>dir</format>
+		  </formats>
         </configuration>
         <executions>
           <execution>
