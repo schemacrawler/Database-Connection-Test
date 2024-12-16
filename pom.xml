@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>us.fatehi</groupId>
   <artifactId>database-connection-test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>Database Connection Test</name>
   <description>Attempts to connect to a database using a JDBC URL.</description>

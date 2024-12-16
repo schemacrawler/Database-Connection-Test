@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+    ignore:
+      - dependency-name: "org.springframework:spring-context"
+        update-types: ["version-update:semver-major"]      
+    labels:
+      - "dependencies"
+      - ":children_crossing: dependencies"
+    assignees:
+      - "sualeh"
+      - "schemacrawler"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - ":children_crossing: dependencies"
+    assignees:
+      - sualeh
+      - schemacrawler
