@@ -40,4 +40,4 @@ COPY target/database-connection-test /opt/database-connection-test/
 
 WORKDIR /opt/database-connection-test
 
-ENTRYPOINT ["sh", "./bin/run.sh"]
+ENTRYPOINT ["bash", "./bin/run.sh"]
