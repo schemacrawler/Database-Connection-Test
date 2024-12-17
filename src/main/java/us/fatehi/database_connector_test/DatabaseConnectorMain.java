@@ -26,7 +26,7 @@ http://www.gnu.org/licenses/
 ========================================================================
 */
 
-package us.fatehi;
+package us.fatehi.database_connector_test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
