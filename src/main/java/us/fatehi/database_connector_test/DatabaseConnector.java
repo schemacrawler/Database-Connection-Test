@@ -32,57 +32,63 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.concurrent.Callable;
 import picocli.CommandLine;
+import picocli.CommandLine.ArgGroup;
 
 @CommandLine.Command(
     name = "Database Connection Test",
     description = "Tests connection to a database",
     version = "Database Connection Test, v1.0.0",
     mixinStandardHelpOptions = true)
-public class DatabaseConnectorMain implements Callable<Integer> {
+public class DatabaseConnector implements Callable<Integer> {
 
   public static void main(final String... args) {
-
-    SystemInfo.printArgs(args);
-    SystemInfo.printSystemInfo();
-    SystemInfo.printJvmArch();
-
-    final DatabaseConnectorMain databaseConnector = new DatabaseConnectorMain();
+    final DatabaseConnector databaseConnector = new DatabaseConnector(args);
     final int exitCode = new CommandLine(databaseConnector).execute(args);
     if (exitCode != 0) {
-      throw new RuntimeException(DatabaseConnectorMain.class + " has exited with an error");
+      System.err.println(DatabaseConnector.class.getSimpleName() + " has exited with an error");
     }
   }
 
+  private final String[] args;
+
   @CommandLine.Option(
       names = {"--url"},
-      required = true,
       description = "JDBC connection URL to the database",
       paramLabel = "<url>")
   private String connectionUrl;
 
-  @CommandLine.Option(
-      names = {"--user"},
-      description = "Database user name",
-      paramLabel = "<user>")
-  private String user;
+  @ArgGroup(heading = "Specify the database user name using one of these options\n")
+  private UserOptions userOptions;
 
-  @CommandLine.Option(
-      names = {"--password"},
-      description = "Database password",
-      paramLabel = "<password>")
-  private String passwordProvided;
+  @ArgGroup(heading = "Specify the database password using one of these options\n")
+  private PasswordOptions passwordOptions;
 
   @CommandLine.Option(
       names = {"--debug", "-d"},
       description = "Debug trace")
   private boolean debug;
 
-  private DatabaseConnectorMain() {}
+  private DatabaseConnector(final String[] args) {
+    this.args = args;
+  }
 
   @Override
   public Integer call() {
+
+    System.out.println("Database Connection Test, v1.0.0");
+    if (debug) {
+      SystemInfo.printArgs(args);
+      SystemInfo.printSystemInfo();
+      SystemInfo.printJvmArch();
+    }
+
+    if (connectionUrl == null || connectionUrl.isEmpty()) {
+      System.err.println("Database connection url is required");
+      return 1;
+    }
     try (final Connection connection =
-        DriverManager.getConnection(connectionUrl, user, passwordProvided)) {
+        DriverManager.getConnection(
+            connectionUrl, userOptions.getUser(), passwordOptions.getPassword())) {
       SystemInfo.printDatabaseInfo(connection);
     } catch (final Exception e) {
       e.printStackTrace();

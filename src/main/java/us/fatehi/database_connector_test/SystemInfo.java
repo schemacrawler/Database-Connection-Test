@@ -96,7 +96,9 @@ public class SystemInfo {
     final Pattern systemInfoProperty =
         Pattern.compile("^(java|jvm|os).*$", Pattern.CASE_INSENSITIVE);
 
-    System.getProperties().keySet().stream().map(String::valueOf).sorted()
+    System.getProperties().keySet().stream()
+        .map(String::valueOf)
+        .sorted()
         .filter(key -> systemInfoProperty.matcher(key).matches())
         .forEachOrdered(key -> System.out.printf("  %s=%s%n", key, System.getProperty(key)));
   }
