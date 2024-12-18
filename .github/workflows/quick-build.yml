@@ -34,3 +34,11 @@ jobs:
           --no-transfer-progress \
           --batch-mode \
           clean package
+
+    - id: upload-distribution
+      name: Upload distribution
+      uses: actions/upload-artifact@v4
+      with:
+        name: database-connection-test
+        path: ./target/database-connection-test
+        retention-days: 5
