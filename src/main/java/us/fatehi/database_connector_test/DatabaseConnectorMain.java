@@ -36,6 +36,7 @@ import picocli.CommandLine;
 @CommandLine.Command(
     name = "Database Connection Test",
     description = "Tests connection to a database",
+    version = "Database Connection Test, v1.0.0",
     mixinStandardHelpOptions = true)
 public class DatabaseConnectorMain implements Callable<Integer> {
 
