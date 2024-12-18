@@ -39,13 +39,13 @@ import picocli.CommandLine.ArgGroup;
     description = "Tests connection to a database",
     version = "Database Connection Test, v1.0.0",
     mixinStandardHelpOptions = true)
-public class DatabaseConnector implements Callable<Integer> {
+public class DatabaseConnectorMain implements Callable<Integer> {
 
   public static void main(final String... args) {
-    final DatabaseConnector databaseConnector = new DatabaseConnector(args);
+    final DatabaseConnectorMain databaseConnector = new DatabaseConnectorMain(args);
     final int exitCode = new CommandLine(databaseConnector).execute(args);
     if (exitCode != 0) {
-      System.err.println(DatabaseConnector.class.getSimpleName() + " has exited with an error");
+      System.err.println(DatabaseConnectorMain.class.getSimpleName() + " has exited with an error");
     }
   }
 
@@ -68,7 +68,7 @@ public class DatabaseConnector implements Callable<Integer> {
       description = "Debug trace")
   private boolean debug;
 
-  private DatabaseConnector(final String[] args) {
+  private DatabaseConnectorMain(final String[] args) {
     this.args = args;
   }
 
