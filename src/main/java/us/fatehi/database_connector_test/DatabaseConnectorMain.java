@@ -45,7 +45,8 @@ public class DatabaseConnectorMain implements Callable<Integer> {
     final DatabaseConnectorMain databaseConnector = new DatabaseConnectorMain(args);
     final int exitCode = new CommandLine(databaseConnector).execute(args);
     if (exitCode != 0) {
-      System.err.println(DatabaseConnectorMain.class.getSimpleName() + " has exited with an error");
+      // System.exit is not supported in Java 21
+      System.err.println("Error - exit code=" + exitCode);
     }
   }
 
@@ -92,7 +93,7 @@ public class DatabaseConnectorMain implements Callable<Integer> {
       SystemInfo.printDatabaseInfo(connection);
     } catch (final Exception e) {
       e.printStackTrace();
-      return 1;
+      return 2;
     }
     return 0;
   }
