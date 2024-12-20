@@ -136,6 +136,7 @@
           </descriptors>
           <formats>
             <format>dir</format>
+			<format>zip</format>
           </formats>
           <appendAssemblyId>false</appendAssemblyId>
           <finalName>database-connection-test/bin</finalName>
