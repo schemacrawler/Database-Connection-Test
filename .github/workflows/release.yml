@@ -47,6 +47,7 @@ jobs:
           --batch-mode \
           clean package
         mv ./target/database-connection-test/bin.zip ./target/database-connection-test.zip
+        ls -l ./target
 
 # CREATE GITHUB RELEASE
     - id: create-release
@@ -59,7 +60,7 @@ jobs:
         draft: false
         prerelease: false
         body: |
-          SchemaCrawler ${{ github.event.release.tag_name }} release at last commit ${{ github.sha }}
+          SchemaCrawler Database Connection Test ${{ github.event.release.tag_name }} release at last commit ${{ github.sha }}
           See the change history at https://www.schemacrawler.com/changes-report.html
         generate_release_notes: true
         files: ./target/database-connection-test.zip

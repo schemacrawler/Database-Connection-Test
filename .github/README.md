@@ -4,7 +4,7 @@
 
 # <img src="https://raw.githubusercontent.com/schemacrawler/SchemaCrawler/main/schemacrawler-website/src/site/resources/images/schemacrawler_logo.png" height="100px" width="100px" valign="middle"/> SchemaCrawler - Database Connection Test
 
-> [!NOTE]  
+> [!NOTE]
 > * Please see the [SchemaCrawler website](https://www.schemacrawler.com/) for more details.
 
 
@@ -16,7 +16,10 @@ This project allows you to test connectivity to a database server.
 
 ## How to Use
 
-SchemaCrawler 
+1. Download the image
+   `docker pull schemacrawler/database-connection-test`
+2. Run the database connection test
+   `docker run --rm -it schemacrawler/database-connection-test --help`
 
 
 ## Licensing
