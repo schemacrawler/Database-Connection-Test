@@ -14,6 +14,10 @@ SchemaCrawler is a free database schema discovery and comprehension tool. Schema
 
 This project allows you to test connectivity to a database server.
 
+## How to Use
+
+SchemaCrawler 
+
 
 ## Licensing
 
