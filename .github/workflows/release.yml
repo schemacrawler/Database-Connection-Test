@@ -63,8 +63,7 @@ jobs:
           SchemaCrawler Database Connection Test ${{ github.event.release.tag_name }} release at last commit ${{ github.sha }}
           See the change history at https://www.schemacrawler.com/changes-report.html
         generate_release_notes: true
-        files: |
-	  ./target/database-connection-test.zip
+        files: ./target/database-connection-test.zip
 
 # BUILD AND PUBLISH DOCKER IMAGE
     - id: setup-qemu
