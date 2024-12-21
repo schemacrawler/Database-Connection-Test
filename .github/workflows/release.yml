@@ -49,13 +49,13 @@ jobs:
         mv ./target/database-connection-test/bin.zip ./target/database-connection-test.zip
         ls -l ./target
 
-# CREATE GITHUB RELEASE
+# CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
       name: Create GitHub release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        token: ${{ secrets.RELEASE_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         name: ${{ github.ref_name }}
         draft: false
         prerelease: false
@@ -63,7 +63,8 @@ jobs:
           SchemaCrawler Database Connection Test ${{ github.event.release.tag_name }} release at last commit ${{ github.sha }}
           See the change history at https://www.schemacrawler.com/changes-report.html
         generate_release_notes: true
-        files: ./target/database-connection-test.zip
+        files: |
+	  ./target/database-connection-test.zip
 
 # BUILD AND PUBLISH DOCKER IMAGE
     - id: setup-qemu
