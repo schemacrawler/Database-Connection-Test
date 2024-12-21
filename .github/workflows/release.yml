@@ -46,6 +46,7 @@ jobs:
           --no-transfer-progress \
           --batch-mode \
           clean package
+        mv ./target/database-connection-test/bin.zip ./target/database-connection-test.zip
 
 # CREATE GITHUB RELEASE
     - id: create-release
